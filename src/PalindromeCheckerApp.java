@@ -1,29 +1,32 @@
-public class UseCase4PalindromeCheckerApp {
+import java.util.Stack;
+
+public class UseCase5PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         System.out.println("Palindrome Checker App");
-        System.out.println("UC4: Character Array Based Palindrome Check");
+        System.out.println("UC5: Stack-Based Palindrome Checker");
         System.out.println();
 
-        String word = "level";   // You can change this value
-        char[] characters = word.toCharArray();  // Convert string to char[]
+        String word = "madam";   // You can change this value
+        Stack<Character> stack = new Stack<>();
 
-        int start = 0;
-        int end = characters.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
+        }
+
         boolean isPalindrome = true;
 
-        // Two-pointer approach
-        while (start < end) {
-            if (characters[start] != characters[end]) {
+        // Pop and compare
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-            start++;
-            end--;
         }
 
-        // Display result
+        // Print result
         if (isPalindrome) {
             System.out.println(word + " is a Palindrome.");
         } else {
