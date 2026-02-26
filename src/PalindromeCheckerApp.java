@@ -1,35 +1,43 @@
+// Palindrome Service Class (Encapsulated Logic)
+class PalindromeChecker {
+
+    // Method to check palindrome
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+        return true;
+    }
+}
+
+// Main Application Class
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
         System.out.println("Palindrome Checker App");
-        System.out.println("UC10: Case-Insensitive & Space-Ignored Palindrome");
+        System.out.println("UC11: Object-Oriented Palindrome Service");
         System.out.println();
 
-        String input = "A man a plan a canal Panama";   // You can change this
+        String word = "level";   // You can change this value
 
-        // Step 1: Normalize string (remove spaces and convert to lowercase)
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        // Create object of service class
+        PalindromeChecker checker = new PalindromeChecker();
 
-        // Step 2: Check palindrome
-        boolean isPalindrome = true;
-        int start = 0;
-        int end = normalized.length() - 1;
+        boolean result = checker.checkPalindrome(word);
 
-        while (start < end) {
-            if (normalized.charAt(start) != normalized.charAt(end)) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-
-        // Print result
-        if (isPalindrome) {
-            System.out.println("\"" + input + "\" is a Palindrome (ignoring case & spaces).");
+        if (result) {
+            System.out.println(word + " is a Palindrome.");
         } else {
-            System.out.println("\"" + input + "\" is NOT a Palindrome.");
+            System.out.println(word + " is NOT a Palindrome.");
         }
     }
 }
